@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	for (i = 0; i < total; i++) {
 		new MediaElementPlayer(mediaElements[i], {
 			stretching: stretching,
+			iconSprite: '../build/mejs-controls.svg',
 			fakeFullscreen: fakefullscreen,
 			success: function (media) {
 				var renderer = document.getElementById(media.id + '-rendername');
