@@ -91,7 +91,7 @@ Object.assign(MediaElementPlayer.prototype, {
     player.captionsButton = document.createElement('div');
     player.captionsButton.className = `${t.options.classPrefix}button ${t.options.classPrefix}captions-button`;
     player.captionsButton.innerHTML =
-      generateControlButton(t.id, tracksTitle, tracksTitle, `${t.media.options.iconSprite}`, ['icon-captions'], `${t.options.classPrefix}`) +
+      generateControlButton(t.id, tracksTitle, tracksTitle, `${t.media.options.iconSprite}`, ['icon-captions', 'icon-captions-active'], `${t.options.classPrefix}`) +
       `<div class="${t.options.classPrefix}captions-selector ${t.options.classPrefix}offscreen">` +
         `<ul class="${t.options.classPrefix}captions-selector-list">` +
           `<li class="${t.options.classPrefix}captions-selector-list-item">` +
