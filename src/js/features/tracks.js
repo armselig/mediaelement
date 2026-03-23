@@ -8,6 +8,7 @@ import MediaElementPlayer from '../player';
 import {isString, createEvent} from '../utils/general';
 import {addClass, removeClass, hasClass, siblings} from '../utils/dom';
 import {generateControlButton} from '../utils/generate';
+import {checkSpriteSymbol} from '../utils/icons';
 
 /**
  * Closed Captions (CC) button
@@ -106,6 +107,15 @@ Object.assign(MediaElementPlayer.prototype, {
       `</div>`;
 
     t.addControlElement(player.captionsButton, 'tracks');
+
+    // Detect whether the sprite contains icon-captions-active. If not, apply a fallback class so
+    // the default icon-captions remains visible in the active state (backwards compatibility with
+    // custom sprites that pre-date the active-icon addition).
+    checkSpriteSymbol(t.media.options.iconSprite, 'icon-captions-active').then(hasActiveIcon => {
+      if (!hasActiveIcon) {
+        addClass(player.captionsButton, `${t.options.classPrefix}captions-icon-fallback`);
+      }
+    });
 
     player.captionsButton.querySelector(`.${t.options.classPrefix}captions-selector-input`).disabled = false;
 

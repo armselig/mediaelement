@@ -680,7 +680,7 @@ var _mejs2 = _interopRequireDefault(_mejs);
 
 var _general = _dereq_(26);
 
-var _media2 = _dereq_(28);
+var _media2 = _dereq_(29);
 
 var _renderer = _dereq_(9);
 
@@ -1101,7 +1101,7 @@ _mejs2.default.MediaElement = MediaElement;
 
 exports.default = MediaElement;
 
-},{"2":2,"24":24,"26":26,"28":28,"3":3,"8":8,"9":9}],8:[function(_dereq_,module,exports){
+},{"2":2,"24":24,"26":26,"29":29,"3":3,"8":8,"9":9}],8:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1271,7 +1271,7 @@ var _general = _dereq_(26);
 
 var _dom = _dereq_(25);
 
-var _media = _dereq_(28);
+var _media = _dereq_(29);
 
 var _generate = _dereq_(27);
 
@@ -1527,7 +1527,7 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"17":17,"2":2,"24":24,"25":25,"26":26,"27":27,"28":28,"6":6}],11:[function(_dereq_,module,exports){
+},{"17":17,"2":2,"24":24,"25":25,"26":26,"27":27,"29":29,"6":6}],11:[function(_dereq_,module,exports){
 'use strict';
 
 var _document = _dereq_(2);
@@ -1638,7 +1638,7 @@ var _i18n2 = _interopRequireDefault(_i18n);
 
 var _constants = _dereq_(24);
 
-var _time = _dereq_(30);
+var _time = _dereq_(31);
 
 var _dom = _dereq_(25);
 
@@ -2188,7 +2188,7 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"17":17,"2":2,"24":24,"25":25,"30":30,"6":6}],13:[function(_dereq_,module,exports){
+},{"17":17,"2":2,"24":24,"25":25,"31":31,"6":6}],13:[function(_dereq_,module,exports){
 'use strict';
 
 var _document = _dereq_(2);
@@ -2203,7 +2203,7 @@ var _i18n = _dereq_(6);
 
 var _i18n2 = _interopRequireDefault(_i18n);
 
-var _time = _dereq_(30);
+var _time = _dereq_(31);
 
 var _dom = _dereq_(25);
 
@@ -2314,7 +2314,7 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"17":17,"2":2,"25":25,"30":30,"6":6}],14:[function(_dereq_,module,exports){
+},{"17":17,"2":2,"25":25,"31":31,"6":6}],14:[function(_dereq_,module,exports){
 'use strict';
 
 var _document = _dereq_(2);
@@ -2338,6 +2338,8 @@ var _general = _dereq_(26);
 var _dom = _dereq_(25);
 
 var _generate = _dereq_(27);
+
+var _icons = _dereq_(28);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2380,6 +2382,12 @@ Object.assign(_player2.default.prototype, {
     player.captionsButton.innerHTML = (0, _generate.generateControlButton)(t.id, tracksTitle, tracksTitle, '' + t.media.options.iconSprite, ['icon-captions', 'icon-captions-active'], '' + t.options.classPrefix) + ('<div class="' + t.options.classPrefix + 'captions-selector ' + t.options.classPrefix + 'offscreen">') + ('<ul class="' + t.options.classPrefix + 'captions-selector-list">') + ('<li class="' + t.options.classPrefix + 'captions-selector-list-item">') + ('<input type="radio" class="' + t.options.classPrefix + 'captions-selector-input" ') + ('name="' + player.id + '_captions" id="' + player.id + '_captions_none" ') + 'value="none" checked disabled>' + ('<label class="' + t.options.classPrefix + 'captions-selector-label ') + (t.options.classPrefix + 'captions-selected" ') + ('for="' + player.id + '_captions_none">' + _i18n2.default.t('mejs.none') + '</label>') + '</li>' + '</ul>' + '</div>';
 
     t.addControlElement(player.captionsButton, 'tracks');
+
+    (0, _icons.checkSpriteSymbol)(t.media.options.iconSprite, 'icon-captions-active').then(function (hasActiveIcon) {
+      if (!hasActiveIcon) {
+        (0, _dom.addClass)(player.captionsButton, t.options.classPrefix + 'captions-icon-fallback');
+      }
+    });
 
     player.captionsButton.querySelector('.' + t.options.classPrefix + 'captions-selector-input').disabled = false;
 
@@ -2961,7 +2969,7 @@ _mejs2.default.language = {
   }
 };
 
-},{"17":17,"2":2,"25":25,"26":26,"27":27,"6":6,"8":8}],15:[function(_dereq_,module,exports){
+},{"17":17,"2":2,"25":25,"26":26,"27":27,"28":28,"6":6,"8":8}],15:[function(_dereq_,module,exports){
 'use strict';
 
 var _document = _dereq_(2);
@@ -3474,9 +3482,9 @@ var _constants = _dereq_(24);
 
 var _general = _dereq_(26);
 
-var _time = _dereq_(30);
+var _time = _dereq_(31);
 
-var _media = _dereq_(28);
+var _media = _dereq_(29);
 
 var _dom = _dereq_(25);
 
@@ -4147,7 +4155,7 @@ var MediaElementPlayer = function () {
 								}
 							}, 20);
 						} catch (exp) {
-							
+							console.log(exp);
 						}
 					}
 
@@ -5290,7 +5298,7 @@ _mejs2.default.MediaElementPlayer = MediaElementPlayer;
 
 exports.default = MediaElementPlayer;
 
-},{"18":18,"2":2,"24":24,"25":25,"26":26,"27":27,"28":28,"3":3,"30":30,"6":6,"7":7,"8":8}],18:[function(_dereq_,module,exports){
+},{"18":18,"2":2,"24":24,"25":25,"26":26,"27":27,"29":29,"3":3,"31":31,"6":6,"7":7,"8":8}],18:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5538,7 +5546,7 @@ var _renderer = _dereq_(9);
 
 var _general = _dereq_(26);
 
-var _media = _dereq_(28);
+var _media = _dereq_(29);
 
 var _constants = _dereq_(24);
 
@@ -5768,7 +5776,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(DashNativeRenderer);
 
-},{"24":24,"25":25,"26":26,"28":28,"3":3,"8":8,"9":9}],21:[function(_dereq_,module,exports){
+},{"24":24,"25":25,"26":26,"29":29,"3":3,"8":8,"9":9}],21:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -5787,7 +5795,7 @@ var _general = _dereq_(26);
 
 var _constants = _dereq_(24);
 
-var _media = _dereq_(28);
+var _media = _dereq_(29);
 
 var _dom = _dereq_(25);
 
@@ -6057,7 +6065,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(HlsNativeRenderer);
 
-},{"24":24,"25":25,"26":26,"28":28,"3":3,"8":8,"9":9}],22:[function(_dereq_,module,exports){
+},{"24":24,"25":25,"26":26,"29":29,"3":3,"8":8,"9":9}],22:[function(_dereq_,module,exports){
 'use strict';
 
 var _window = _dereq_(3);
@@ -6223,7 +6231,7 @@ var _renderer = _dereq_(9);
 
 var _general = _dereq_(26);
 
-var _media = _dereq_(28);
+var _media = _dereq_(29);
 
 var _dom = _dereq_(25);
 
@@ -6473,7 +6481,7 @@ var YouTubeIframeRenderer = {
 							mediaElement.dispatchEvent(event);
 							break;
 						default:
-							
+							console.log('youtube ' + youtube.id, propName, 'UNSUPPORTED property');
 							break;
 					}
 				} else {
@@ -6743,7 +6751,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(YouTubeIframeRenderer);
 
-},{"2":2,"25":25,"26":26,"28":28,"3":3,"8":8,"9":9}],24:[function(_dereq_,module,exports){
+},{"2":2,"25":25,"26":26,"29":29,"3":3,"8":8,"9":9}],24:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7340,6 +7348,37 @@ _mejs2.default.Utils.generateControlButton = generateControlButton;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.checkSpriteSymbol = checkSpriteSymbol;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var spriteCache = new Map();
+
+function checkSpriteSymbol(spriteUrl, symbolId) {
+  if (spriteCache.has(spriteUrl)) {
+    return Promise.resolve(spriteCache.get(spriteUrl).has(symbolId));
+  }
+
+  return fetch(spriteUrl).then(function (r) {
+    return r.text();
+  }).then(function (text) {
+    var doc = new DOMParser().parseFromString(text, 'image/svg+xml');
+    var ids = new Set([].concat(_toConsumableArray(doc.querySelectorAll('symbol'))).map(function (s) {
+      return s.id;
+    }));
+    spriteCache.set(spriteUrl, ids);
+    return ids.has(symbolId);
+  }).catch(function () {
+    return false;
+  });
+}
+
+},{}],29:[function(_dereq_,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.typeChecks = undefined;
@@ -7461,7 +7500,7 @@ _mejs2.default.Utils.getTypeFromFile = getTypeFromFile;
 _mejs2.default.Utils.getExtension = getExtension;
 _mejs2.default.Utils.normalizeExtension = normalizeExtension;
 
-},{"26":26,"8":8}],29:[function(_dereq_,module,exports){
+},{"26":26,"8":8}],30:[function(_dereq_,module,exports){
 'use strict';
 
 var _document = _dereq_(2);
@@ -7620,7 +7659,7 @@ if (!window.Promise) {
 	}
 })(window.Node || window.Element);
 
-},{"2":2,"4":4,"5":5}],30:[function(_dereq_,module,exports){
+},{"2":2,"4":4,"5":5}],31:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7873,4 +7912,4 @@ _mejs2.default.Utils.timeCodeToSeconds = timeCodeToSeconds;
 _mejs2.default.Utils.calculateTimeFormat = calculateTimeFormat;
 _mejs2.default.Utils.convertSMPTEtoSeconds = convertSMPTEtoSeconds;
 
-},{"8":8}]},{},[29,7,6,16,22,20,21,23,17,19,18,10,11,12,13,14,15]);
+},{"8":8}]},{},[30,7,6,16,22,20,21,23,17,19,18,10,11,12,13,14,15]);
